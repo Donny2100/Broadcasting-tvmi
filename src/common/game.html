@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0131)http://www.elated.com/res/File/articles/development/javascript/jquery/drag-and-drop-with-jquery-your-essential-guide/card-game.html -->
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>PMCMentor Game</title>
+
+<link rel="stylesheet" type="text/css" href="./gamestyle.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+<!--<script type="text/javascript" src="js/jquery.min.js"></script>-->
+<script src="./jquery-1.7.2.min.js"></script>
+<script src="./jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="./jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript">
+//onresize=onload=function(){document.body.style.fontSize=window.innerWidth/10+"px"}
+var correctCards = 0;
+var totalCorrect = 0;
+var LevelID = 0;
+var leveldata = null;
+var numbers = null;
+//$( init );
+function StartGame(data){
+	leveldata = data;
+	numbers = leveldata.options;
+	//LevelID = ID;
+	init(false);
+	//$( init );
+}
+function isiPhone(){
+    return (
+        (navigator.platform.indexOf("iPhone") != -1) ||
+        (navigator.platform.indexOf("iPod") != -1)
+    );
+}
+function init(flag) {
+
+  if(flag){
+//  	Ti.App.fireEvent('updatelevel', { data : LevelID} );
+  }else{
+  	  // Reset the game
+	  correctCards = 0;
+	  $('#title').html( '' );
+	  $('#cardPile').html( '' );
+	  $('#cardSlots').html( '' );
+	  $('#cardSlotsRows').html( '' );
+	  var cheight = $(window).height();
+	  $('#cardSlots').css( {
+	    "min-height": cheight/3 +"px"
+	  } );
+
+	  $('#cardSlotsRows').css( {
+	    "min-height": cheight/3 +"px"
+	  } );
+
+	  $('#cardPile').css( {
+	    height: cheight/3 +"px"
+	  } );
+	  if(isiPhone()){
+	  	$('body').css( {
+			"font-size": cheight * .03  +"px"
+		  } );
+	  }
+	  else{
+	  	var fheight = cheight * .035;
+	    if (fheight < 15)
+	     fheight = 15;
+	    $('body').css({
+	    	"font-size": fheight  +"px"
+	    });
+		  /*$('body').css( {
+			"font-size": fheight  +"px"
+		  } );*/
+	  }
+
+	  // Create the pile of shuffled cards
+		  //var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+
+	  numbers.sort( function() { return Math.random() - .5 } );
+	  totalCorrect = 0;
+	  for ( var i=0; i<numbers.length; i++ ) {
+	  	if(numbers[i].type != 0)
+	  		totalCorrect++;
+	    $('<div>' + numbers[i].value + '</div>').data( 'number', numbers[i].type ).attr( 'id', 'card'+i ).appendTo( '#cardPile' ).draggable( {
+	      containment: '#content',
+	      stack: '#cardPile div',
+	      cursor: 'move',
+	      revert: true
+	    } );
+	  }
+
+//	  $('<span style="color: #fff;">'+leveldata.level+'</span>').appendTo( '#title' );
+	  var words = [ leveldata.cat_1, leveldata.cat_2, leveldata.cat_3];
+	  for ( var i=1; i<=words.length; i++ ) {
+	    $('<div style="min-height: '+ cheight +'px; padding-bottom: 50px;"><span class="titlebox_'+i+'">'+words[i-1]+'</span></div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+	      accept: '#cardPile div',
+	      over:handleHover,
+	      drop: handleCardDrop,
+	      out: handleCardOut
+	    });
+	  }
+
+	  /*var leveldata;
+	  $.getJSON( 'http://app.pmcmentor.com/api/?func_name=getgame_byid&paramsarray={"levelid":'+LevelID+'}', function( data ) {
+		  leveldata = data.data;
+
+		  // Create the pile of shuffled cards
+		  //var numbers = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+		  var numbers = leveldata.options;
+	  numbers.sort( function() { return Math.random() - .5 } );
+
+	  for ( var i=0; i<numbers.length; i++ ) {
+	    $('<div>' + numbers[i].value + '</div>').data( 'number', numbers[i].type ).attr( 'id', 'card'+i ).appendTo( '#cardPile' ).draggable( {
+	      containment: '#content',
+	      stack: '#cardPile div',
+	      cursor: 'move',
+	      revert: true
+	    } );
+	  }
+
+		$('<span style="color: #fff;">'+leveldata.level+'</span>').appendTo( '#title' );
+	  // Create the card slots
+	  var words = [ leveldata.cat_1, leveldata.cat_2, leveldata.cat_3];
+	  for ( var i=1; i<=words.length; i++ ) {
+	    $('<div style="min-height: '+ cheight * .4 +'px; padding-bottom: '+ cheight * .1 +'px;"><span class="titlebox_'+i+'">'+words[i-1]+'</span></div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+	      accept: '#cardPile div',
+	      //hoverClass: 'hovered',
+	      over:handleHover,
+	      drop: handleCardDrop,
+	      out: handleCardOut
+	    });
+	  }
+	});*/
+  }
+}
+
+function handleCardOut( event, ui ) {
+	this.style.backgroundColor = '#ffffff';
+}
+
+function handleHover( event, ui ) {
+	var slotNumber = $(this).data( 'number' );
+  	var cardNumber = ui.draggable.data( 'number' );
+	if ( slotNumber == cardNumber ) {
+  		this.style.backgroundColor = 'green';
+  	}else{
+  		this.style.backgroundColor = 'red';
+  	}
+}
+
+function handleCardDrop( event, ui ) {
+  var slotNumber = $(this).data( 'number' );
+  var cardNumber = ui.draggable.data( 'number' );
+
+  // If the card was dropped to the correct slot,
+  // change the card colour, position it directly
+  // on top of the slot, and prevent it being dragged
+  // again
+
+  if ( slotNumber == cardNumber ) {
+//	Ti.App.fireEvent('right');
+  	ui.draggable.appendTo($(this));
+    correctCards++;
+  }else{
+//  	Ti.App.fireEvent('wrong');
+			setTimeout(function(){
+			postMessage('wrong', '*')
+			}, 100);
+
+  }
+
+  // If all the cards have been placed correctly then display a message
+  // and reset the cards for another go
+
+  if ( correctCards == totalCorrect ) {
+//  	Ti.App.fireEvent('cheer');
+			setTimeout(function(){
+			postMessage('right', '*')
+	}, 100);
+
+  }
+	this.style.backgroundColor = '#ffffff';
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="content" style="width: 100%; height: 100%;">
+<!--  <div style=" background: #00203e; width: 100%" id="title"></div>-->
+  <div id="cardSlots"></div>
+  <div id="cardPile"></div>
+</div>
+
+
+
+
+
+</body></html>

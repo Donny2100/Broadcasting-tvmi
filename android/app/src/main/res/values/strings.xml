@@ -1,0 +1,6 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey"></string>
+    <string name="app_name">TVMi</string>
+    <string name="default_notification_channel_id">tvm123</string>
+
+</resources>

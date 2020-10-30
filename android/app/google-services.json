@@ -1,0 +1,115 @@
+{
+  "project_info": {
+    "project_number": "131614185326",
+    "firebase_url": "https://tvm.firebaseio.com",
+    "project_id": "firebase-tvm",
+    "storage_bucket": "firebase-tvm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131614185326:android:aa0d1a809a47ff3c",
+        "android_client_info": {
+          "package_name": "com.tvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131614185326-045eu3m64je2olmrjo63onmt7ghu2pvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tvm",
+            "certificate_hash": "b9f5fdd779866971f944175ef9e16bf29b3b514c"
+          }
+        },
+        {
+          "client_id": "131614185326-1odvn1rt4o82sa9r4l2m3uutcslehuth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL3ta6BiH1E24fcR053ANLamBXY3pyfRI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131614185326-1odvn1rt4o82sa9r4l2m3uutcslehuth.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131614185326-kno12rvk8gvrin3bf3pc0s2u435hecqs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mt.com.tvm",
+                "app_store_id": "1401288350"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131614185326:android:74e2c7a23427ba3a",
+        "android_client_info": {
+          "package_name": "mt.com.tvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131614185326-98cfma0m599a0mcsmprjot7fdgds6fl4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mt.com.tvm",
+            "certificate_hash": "b9f5fdd779866971f944175ef9e16bf29b3b514c"
+          }
+        },
+        {
+          "client_id": "131614185326-1odvn1rt4o82sa9r4l2m3uutcslehuth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL3ta6BiH1E24fcR053ANLamBXY3pyfRI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131614185326-1odvn1rt4o82sa9r4l2m3uutcslehuth.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "131614185326-kno12rvk8gvrin3bf3pc0s2u435hecqs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "mt.com.tvm",
+                "app_store_id": "1401288350"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

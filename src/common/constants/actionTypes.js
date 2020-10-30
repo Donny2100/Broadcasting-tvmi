@@ -1,0 +1,8 @@
+export const SIDEMENU_CURRENT_PAGE = 'SIDEMENU_CURRENT_PAGE';
+export const PROFILE = 'PROFILE';
+export const USERPROFILE = 'USERPROFILE';
+export const PLAYBACK_STATE = 'PLAYBACK_STATE';
+export const TRACK_STATE = 'TRACK_STATE';
+export const TRACK_STATUS = 'TRACK_STATUS';
+export const PLAYBACK_STOP = 'PLAYBACK_STOP';
+export const TV_DATA = 'TV_DATA';

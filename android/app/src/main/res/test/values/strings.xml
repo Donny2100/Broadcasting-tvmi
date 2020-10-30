@@ -1,0 +1,4 @@
+<resources>
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">E20nyEhuYkX_M92zKeHeC5UslT2J5e49a34e-8dce-4a4f-9cec-50398aa47d61</string>
+    <string name="app_name">tvm</string>
+</resources>
